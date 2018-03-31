@@ -56,10 +56,10 @@
 
    function checkFirstUse()
     {
-        document.getElementById("screen").style.display = 'none';
+        //document.getElementById("screen").style.display = 'none';
         TransitMaster.StopTimes({arrivals: true, headingLabel: "Arrival"});
-        //initApp();
-        //askRating();
+        initApp();
+        askRating();
     }
 
 function askRating()
