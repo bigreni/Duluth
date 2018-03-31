@@ -67,7 +67,7 @@ function loadArrivals(route,direction,stop)
             }
 
 			if (msg.d.errorMessage == null && (msg.d.routeStops == null || msg.d.routeStops[0].stops == null || msg.d.routeStops[0].stops[0].crossings == null || msg.d.routeStops[0].stops[0].crossings.length == 0))
-				msg.d.errorMessage = "No upcoming arrivals found.";
+				msg.d.errorMessage = "No upcoming arrivals.";
 
             if (msg.d.errorMessage != null) {
                 displayError(msg.d.errorMessage);
