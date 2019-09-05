@@ -17,6 +17,7 @@ xmlns:gap="http://phonegap.com/ns/1.0"
     <preference name="android-build-tool" value="gradle" /> 
     <gap:plugin name="cordova-plugin-admobpro" source="npm" spec="2.37.2" >
         <variable name="ADMOB_APP_ID" value="pub-9249695405712287"></variable>
+        <variable name="PLAY_SERVICES_VERSION" value="16.0.0" />
     </gap:plugin>
     <preference name="permissions" value="none" />
     <preference name="orientation" value="portrait" />
@@ -31,7 +32,7 @@ xmlns:gap="http://phonegap.com/ns/1.0"
     <preference name="SplashScreenDelay" value="0"/>
     <preference name="auto-hide-splash-screen" value="true" />
     <preference name="disable-cursor" value="false" />
-    <preference name="android-minSdkVersion" value="14" />
+    <preference name="android-minSdkVersion" value="26" />
     <preference name="android-installLocation" value="auto" />
     <preference name="StatusBarOverlaysWebView" value="false" />
     <gap:plugin name="cordova-plugin-statusbar" source="npm"/>
@@ -41,12 +42,12 @@ xmlns:gap="http://phonegap.com/ns/1.0"
     <gap:plugin name="cordova-plugin-whitelist" source="npm"/>
     <gap:plugin name="cordova-plugin-dialogs" source="npm"/>
     <gap:plugin name="cordova-plugin-apprate" source="npm"/>
-    <gap:plugin name="cordova-plugin-app-version" source="npm"/>
     <gap:plugin name="cordova-plugin-firebase" spec="https://github.com/KingWebsites/pgb-plugin-firebase.git">
         <!-- This is the Android app's "API ID" in your Firebase Console. It should have 'android' in the middle -->
         <variable name="APP_GOOGLE_API_ID" value="1:410091117244:android:0a25d05e42ceadd8f20eb9" />
         <!-- This is the long "Web API Key" in your Firebase Console -->
         <variable name="APP_GOOGLE_API_KEY" value="AIzaSyCj5dTKVINvyDhjI7qIReYdvNSOGyJZuiA" />
+        <variable name="PLAY_SERVICES_VERSION" value="16.0.0" />
     </gap:plugin>
     <allow-navigation href="http://*/*" />
     <allow-navigation href="https://*/*" />
