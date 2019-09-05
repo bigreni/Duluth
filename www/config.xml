@@ -15,7 +15,9 @@ xmlns:gap="http://phonegap.com/ns/1.0"
     </author>
     <content src="index.html" />
     <preference name="android-build-tool" value="gradle" /> 
-    <gap:plugin name="cordova-plugin-admobpro" source="npm" />
+    <gap:plugin name="cordova-plugin-admobpro" source="npm" >
+        <variable name="ADMOB_APP_ID" value="pub-9249695405712287"></variable>
+    </gap:plugin>
     <preference name="permissions" value="none" />
     <preference name="orientation" value="portrait" />
     <preference name="target-device" value="universal" />
