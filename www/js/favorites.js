@@ -15,27 +15,6 @@ function loadFavorites()
     }
 }
 
-function saveFavorites()
-{
-    var favStop = localStorage.getItem("Favorites");
-    var newFave = $('#MainMobileContent_routeList option:selected').val() + ">" + $("#MainMobileContent_directionList option:selected").val() + ">" + $("#MainMobileContent_stopList option:selected").val() + ":" + $('#MainMobileContent_routeList option:selected').text() + " > " + $("#MainMobileContent_directionList option:selected").text() + " > " + $("#MainMobileContent_stopList option:selected").text();
-        if (favStop == null)
-        {
-            favStop = newFave;
-        }   
-        else if(favStop.indexOf(newFave) == -1)
-        {
-            favStop = favStop + "|" + newFave;               
-        }
-        else
-        {
-            $("#message").text('Stop is already favorited!!');
-            return;
-        }
-        localStorage.setItem("Favorites", favStop);
-        $("#message").text('Stop added to favorites!!');
-}
-
 function removeFavorite(index)
 {
     var favStop = localStorage.getItem("Favorites");
@@ -55,10 +34,12 @@ function removeFavorite(index)
 
 function loadArrivals(route,direction,stop)
 {
+    var sInfo = stop;
+	var s_tp = sInfo.split("_");
     $.ajax({
         type: "POST",
         url: "http://webwatch.duluthtransit.com/Arrivals.aspx/getStopTimes",
-        data: "{routeID: " + route + ",	directionID: " + direction + ",	stopID:	" + stop + ", useArrivalTimes:true}",
+        data: "{routeID: " + route + ",	directionID: " + direction + ",	stopID:	" + s_tp[0] + ", tpID:	" + s_tp[1] + ", useArrivalTimes:true}",
         contentType: "application/json;	charset=utf-8",
         dataType: "json",
         success: function (msg) {

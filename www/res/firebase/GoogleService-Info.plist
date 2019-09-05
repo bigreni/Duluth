@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>410091117244-9m686fh0pad5nncqiadu99vojffal9jf.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.410091117244-9m686fh0pad5nncqiadu99vojffal9jf</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDmhuWhEeZk8Wy5JwL_bI3gBW4kLVUnYQ0</string>
+	<key>GCM_SENDER_ID</key>
+	<string>410091117244</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.duluth.free</string>
+	<key>PROJECT_ID</key>
+	<string>duluth-7c327</string>
+	<key>STORAGE_BUCKET</key>
+	<string>duluth-7c327.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:410091117244:ios:61450386c995040cf20eb9</string>
+	<key>DATABASE_URL</key>
+	<string>https://duluth-7c327.firebaseio.com</string>
+</dict>
+</plist>

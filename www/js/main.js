@@ -2,7 +2,7 @@
         if ((/(ipad|iphone|ipod|android|windows phone)/i.test(navigator.userAgent))) {
             document.addEventListener('deviceready', checkFirstUse, false);
         } else {
-            checkFirstUse();
+            notFirstUse();
         }
     }
 
@@ -56,10 +56,27 @@
 
    function checkFirstUse()
     {
-        //document.getElementById("screen").style.display = 'none';
         TransitMaster.StopTimes({arrivals: true, headingLabel: "Arrival"});
         initApp();
         askRating();
+        clearFaves();
+        window.FirebasePlugin.setScreenName("Home");
+    }
+
+   function notFirstUse()
+    {
+        document.getElementById("screen").style.display = 'none';
+        TransitMaster.StopTimes({arrivals: true, headingLabel: "Arrival"});
+    }
+
+    function clearFaves()
+    {
+            var appVersion = localStorage.getItem("Oldversion");
+            if (appVersion == null)
+            {
+                localStorage.removeItem("Favorites");
+                localStorage.setItem("Oldversion", 1);
+            }   
     }
 
 function askRating()
@@ -76,6 +93,33 @@ function askRating()
 };
  
 AppRate.promptForRating(false);
+}
+
+function loadFaves()
+{
+    window.location = "Favorites.html";
+    window.FirebasePlugin.setScreenName("Favorites");
+}
+
+function saveFavorites()
+{
+    var favStop = localStorage.getItem("Favorites");
+    var newFave = $('#MainMobileContent_routeList option:selected').val() + ">" + $("#MainMobileContent_directionList option:selected").val() + ">'" + $("#MainMobileContent_stopList option:selected").val() + "':" + $('#MainMobileContent_routeList option:selected').text() + " > " + $("#MainMobileContent_directionList option:selected").text() + " > " + $("#MainMobileContent_stopList option:selected").text();
+        if (favStop == null)
+        {
+            favStop = newFave;
+        }   
+        else if(favStop.indexOf(newFave) == -1)
+        {
+            favStop = favStop + "|" + newFave;               
+        }
+        else
+        {
+            $("#message").text('Stop is already favorited!!');
+            return;
+        }
+        localStorage.setItem("Favorites", favStop);
+        $("#message").text('Stop added to favorites!!');
 }
 
 var	TransitMaster =	TransitMaster || {};
@@ -257,7 +301,7 @@ TransitMaster.StopTimes = function (options) {
                 $(list).get(0).options[$(list).get(0).options.length] = new Option("Select a stop...", "");
 
                 $.each(msg.d, function (index, item) {
-                    $(list).append($("<option />").val(item.id).text(item.name));
+                    $(list).append($("<option />").val(item.id + "_" + item.tp).text(item.name));
                     //$(list).get(0).options[$(list).get(0).options.length] = new Option(item.name, item.id);
                 });
 
@@ -282,12 +326,15 @@ TransitMaster.StopTimes = function (options) {
             $("#stopWait").removeClass("hidden");
         }
 
+        var sInfo = $("#MainMobileContent_stopList").val();
+		var s_tp = sInfo.split("_");
+
         $.ajax({
             type: "POST",
             url: "http://webwatch.duluthtransit.com/Arrivals.aspx/getStopTimes",
-            data: "{routeID: " + $("#MainMobileContent_routeList").val() + ",	directionID: " + $("#MainMobileContent_directionList").val() + ",	stopID:	" + $("#MainMobileContent_stopList").val() + ", useArrivalTimes:	" + settings.arrivals + "}",
-            contentType: "application/json;	charset=utf-8",
-            dataType: "json",
+            data: "{routeID: " + $("#MainMobileContent_routeList").val() + ",	directionID: " + $("#MainMobileContent_directionList").val() + ",	stopID:	" + s_tp[0] + ",	tpID:	" + s_tp[1] + ", useArrivalTimes:	" + settings.arrivals + "}",
+			contentType: "application/json;	charset=utf-8",
+			dataType: "json",
             success: function (msg) {
                 if (msg.d == null) {
                     msg.d = { errorMessage: "Realtime arrivals is currently unavailable. Please try again later." };

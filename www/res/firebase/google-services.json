@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "410091117244",
+    "firebase_url": "https://duluth-7c327.firebaseio.com",
+    "project_id": "duluth-7c327",
+    "storage_bucket": "duluth-7c327.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:410091117244:android:0a25d05e42ceadd8f20eb9",
+        "android_client_info": {
+          "package_name": "com.duluth.free"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "410091117244-4h7e0ad7dphmpiokescovn2kl03tcqa9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkYnH_o9n_QFCSXWH4KVjYxJ8246KjmWI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "410091117244-4h7e0ad7dphmpiokescovn2kl03tcqa9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

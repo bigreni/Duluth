@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget 
 id="com.duluth.free" 
-version="1.0.1"
-versionCode = "3" 
+version="1.0.2"
+versionCode = "4" 
 xmlns="http://www.w3.org/ns/widgets"
 xmlns:gap="http://phonegap.com/ns/1.0"
 >
@@ -39,9 +39,22 @@ xmlns:gap="http://phonegap.com/ns/1.0"
     <gap:plugin name="cordova-plugin-whitelist" source="npm"/>
     <gap:plugin name="cordova-plugin-dialogs" source="npm"/>
     <gap:plugin name="cordova-plugin-apprate" source="npm"/>
+    <gap:plugin name="cordova-plugin-app-version" source="npm"/>
+    <gap:plugin name="cordova-plugin-firebase" spec="https://github.com/KingWebsites/pgb-plugin-firebase.git">
+        <!-- This is the Android app's "API ID" in your Firebase Console. It should have 'android' in the middle -->
+        <variable name="APP_GOOGLE_API_ID" value="1:410091117244:android:0a25d05e42ceadd8f20eb9" />
+        <!-- This is the long "Web API Key" in your Firebase Console -->
+        <variable name="APP_GOOGLE_API_KEY" value="AIzaSyCj5dTKVINvyDhjI7qIReYdvNSOGyJZuiA" />
+    </gap:plugin>
     <allow-navigation href="http://*/*" />
     <allow-navigation href="https://*/*" />
     <allow-navigation href="data:*" />
+    <platform name="android">
+        <resource-file src="res/firebase/google-services.json" target="google-services.json" />
+    </platform>
+    <platform name="ios">
+        <resource-file src="res/firebase/GoogleService-Info.plist" />
+    </platform>
     <icon src="icon.png" gap:role="default" />
     <icon gap:platform="android" gap:qualifier="ldpi" src="res/icon/android/Icon-36.png" />
     <icon gap:platform="android" gap:qualifier="mdpi" src="res/icon/android/Icon-48.png" />
