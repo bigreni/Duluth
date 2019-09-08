@@ -60,7 +60,7 @@
         initApp();
         askRating();
         clearFaves();
-        window.FirebasePlugin.setScreenName("Home");
+        //window.FirebasePlugin.setScreenName("Home");
     }
 
    function notFirstUse()
@@ -98,7 +98,7 @@ AppRate.promptForRating(false);
 function loadFaves()
 {
     window.location = "Favorites.html";
-    window.FirebasePlugin.setScreenName("Favorites");
+    //window.FirebasePlugin.setScreenName("Favorites");
 }
 
 function saveFavorites()
