@@ -38,12 +38,14 @@
     function registerAdEvents() {
         // new events, with variable to differentiate: adNetwork, adType, adEvent
         document.addEventListener('onAdFailLoad', function (data) {
-            document.getElementById("screen").style.display = 'none';        });
+            document.getElementById("screen").style.display = 'none';
+        });
         document.addEventListener('onAdLoaded', function (data) { });
         document.addEventListener('onAdPresent', function (data) { });
         document.addEventListener('onAdLeaveApp', function (data) { });
         document.addEventListener('onAdDismiss', function (data) { 
-            document.getElementById("screen").style.display = 'none';        });
+            document.getElementById("screen").style.display = 'none';
+        });
     }
 
     function createSelectedBanner() {
@@ -86,7 +88,6 @@ TransitMaster.StopTimes = function (options) {
 
     var timer = null;
     var initialView = true;
-    $('#simplemenu').sidr();
     initialize();
 
     function initialize() {
