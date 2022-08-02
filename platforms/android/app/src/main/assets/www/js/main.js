@@ -38,12 +38,18 @@
     function registerAdEvents() {
         // new events, with variable to differentiate: adNetwork, adType, adEvent
         document.addEventListener('onAdFailLoad', function (data) {
-            document.getElementById("screen").style.display = 'none';        });
-        document.addEventListener('onAdLoaded', function (data) { });
+            document.getElementById("screen").style.display = 'none';
+        });
+        document.addEventListener('onAdLoaded', function (data) { 
+            document.getElementById("screen").style.display = 'none';
+        });
         document.addEventListener('onAdPresent', function (data) { });
-        document.addEventListener('onAdLeaveApp', function (data) { });
+        document.addEventListener('onAdLeaveApp', function (data) { 
+            document.getElementById("screen").style.display = 'none';
+        });
         document.addEventListener('onAdDismiss', function (data) { 
-            document.getElementById("screen").style.display = 'none';        });
+            document.getElementById("screen").style.display = 'none';
+        });
     }
 
     function createSelectedBanner() {
@@ -51,7 +57,16 @@
     }
 
     function loadInterstitial() {
-        AdMob.prepareInterstitial({ adId: admobid.interstitial, isTesting: false, autoShow: true });
+        if ((/(android|windows phone)/i.test(navigator.userAgent))) {
+            AdMob.prepareInterstitial({ adId: admobid.interstitial, isTesting: false, autoShow: false });
+            //document.getElementById('screen').style.display = 'none';    
+        } else if ((/(ipad|iphone|ipod)/i.test(navigator.userAgent))) {
+            AdMob.prepareInterstitial({ adId: admobid.interstitial, isTesting: false, autoShow: true });
+            //document.getElementById('screen').style.display = 'none';    
+        } else
+        {
+            document.getElementById('screen').style.display = 'none';   
+        }
     }
 
    function checkFirstUse()
@@ -59,24 +74,12 @@
         TransitMaster.StopTimes({arrivals: true, headingLabel: "Arrival"});
         initApp();
         askRating();
-        clearFaves();
-        //window.FirebasePlugin.setScreenName("Home");
     }
 
    function notFirstUse()
     {
         document.getElementById("screen").style.display = 'none';
         TransitMaster.StopTimes({arrivals: true, headingLabel: "Arrival"});
-    }
-
-    function clearFaves()
-    {
-            var appVersion = localStorage.getItem("Oldversion");
-            if (appVersion == null)
-            {
-                localStorage.removeItem("Favorites");
-                localStorage.setItem("Oldversion", 1);
-            }   
     }
 
 function askRating()
@@ -97,8 +100,8 @@ AppRate.promptForRating(false);
 
 function loadFaves()
 {
+    showAd();
     window.location = "Favorites.html";
-    //window.FirebasePlugin.setScreenName("Favorites");
 }
 
 function saveFavorites()
@@ -122,6 +125,18 @@ function saveFavorites()
         $("#message").text('Stop added to favorites!!');
 }
 
+function showAd()
+{
+    document.getElementById("screen").style.display = 'block'; 
+    if ((/(android|windows phone)/i.test(navigator.userAgent))) {
+        AdMob.isInterstitialReady(function(isready){
+            if(isready) 
+                AdMob.showInterstitial();
+        });
+    }
+    document.getElementById("screen").style.display = 'none'; 
+}
+
 var	TransitMaster =	TransitMaster || {};
 
 TransitMaster.StopTimes = function (options) {
@@ -130,7 +145,6 @@ TransitMaster.StopTimes = function (options) {
 
     var timer = null;
     var initialView = true;
-    $('#simplemenu').sidr();
     initialize();
 
     function initialize() {
@@ -321,6 +335,7 @@ TransitMaster.StopTimes = function (options) {
     }
 
     function getArrivalTimes(refresh) {
+        showAd();
         if (!refresh) {
             reset(true);
             $("#stopWait").removeClass("hidden");
