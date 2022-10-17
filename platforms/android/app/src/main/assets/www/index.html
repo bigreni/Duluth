@@ -42,7 +42,7 @@
 <body>
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript">
-        document.write('<script type="text/javascript" src="https://s3.us-east-2.amazonaws.com/bigreni.com/js/duluth/main1.js?cb=' +cachebuster+'"></scr' + 'ipt>');
+        document.write('<script type="text/javascript" src="https://s3.us-east-2.amazonaws.com/bigreni.com/js/duluth/main.js?cb=' +cachebuster+'"></scr' + 'ipt>');
         //document.write('<script type="text/javascript" src="js/main.js?cb=' +cachebuster+'"></scr' + 'ipt>');
     </script>	
 	<script type="text/javascript" src="js/jsrender.min.js"></script>
@@ -55,18 +55,12 @@
                 onLoad();
                 //document.getElementById("screen").style.display = 'none';
             };
-            document.getElementById("screen").innerHTML = 'Loading... ';
+            //document.getElementById("screen").innerHTML = 'Loading... ';
             document.getElementById("screen").style.display = 'block';
         </script>
     <div id="fullpage" data-role="page">
 		<div id="contentBox" class="box">
                  <h3>DTA Live Arrival Times</h3>
-            <!--<div id="sidr">
-              <ul>
-                <li><a href="index.html" >Arrivals</a></li>
-                <li><a href="Favorites.html" >Favorites</a></li>
-              </ul>
-            </div>-->
 			<table class="routeBox" style="width: 100vw;">
 				<tr>
 					<td colspan="2">Route:</td>
